@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="todo">
+<head>
+    <meta charset="UTF-8">
+    <title>ToDoApplication</title>
+    <script src="../angular/angular.min.js"></script>
+    <link rel="stylesheet" href="../bootstrap/dist/css/bootstrap.min.css">
+    <script src="../jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="jumbotron">
+        <div ng-controller="cntr">
+            <h3 class="text-center text-success">ToDoApp</h3>
+            <div class="row">
+                <div class="col-sm-11">
+                    <input type="text" ng-model="task" id="inp" class="form-control">
+                </div>
+                <div class="col sm-1">
+                    <button type="button" ng-model="enableButton" ng-disabled="enableButton" class="btn btn-success"
+                            ng-click="add()">Add
+                    </button>
+                </div>
+            </div>
+            <div class="row" style="margin-top: 20px">
+                <table class="table" border="0">
+                    <tr>
+                        <th>Task No.</th>
+                        <th>Task Nmae</th>
+                        <th>Select</th>
+                    </tr>
+                    <tr ng-repeat="todo in todos">
+                        <td>
+                            <div class="col-sm-1">{{todo.sno}}</div>
+                        </td>
+                        <td>
+                            <div class="col-sm-8">{{todo.taskname}}</div>
+                        </td>
+                        <td>
+                            <div class="col-sm-1">
+                                <input type="checkbox" class="form-control"
+                                       style="width: 15px; height: 18px;" ng-model="todo.isCompleted">{{todo.isCompleted}}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="col-sm-1.5">
+                                <button class="btn btn-sm btn-success" type="button" ng-click="update($index)">Update
+                                </button>
+                                <button class="btn btn-sm btn-danger" type="button" ng-click="delete($index)">Delete
+                                </button>
+                            </div>
+                        </td>
+
+                        <element-Dir></element-Dir>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="todo.js"></script>
+</body>
+</html>
